@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ask a question</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="answer">
+      <h5>You - </h5>
+      <% if params[:question] == 'I am going to work' %>
+        <p>I am going to work</p>
+        <h5>Your Coach - </h5>
+        <p>Great!</p>
+      <% elsif params[:question] =~ /.*\?.*/ %>
+        <p><%= params[:question].capitalize %></p>
+        <h5>Your Coach - </h5>
+        <p>Silly question, get dressed and go to work!</p>
+      <% elsif params[:question] =~/.*/ %>
+        <p><%= params[:question].capitalize %></p>
+        <h5>Your Coach - </h5>
+        <p>I don't care, get dressed and go to work!</p>
+      <% end %>
+      <%= link_to "Ask a new question to you coach", "/ask" %>
+    </div>
+  </div>
+</body>
+</html>
